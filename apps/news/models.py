@@ -36,7 +36,7 @@ class Category(models.Model):
         verbose_name_plural = "Categoryes"
 
     def __str__(self):
-        return self.title
+        return self.name
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -56,7 +56,6 @@ class Articles(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        #ordering = ('name',)
         verbose_name = "articles"
         verbose_name_plural = "articles"
 

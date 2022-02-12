@@ -1,6 +1,3 @@
-from dataclasses import fields
-from pyexpat import model
-from unicodedata import category
 from rest_framework import serializers, status
 from rest_framework.mixins import DestroyModelMixin
 from rest_framework.response import Response
@@ -23,10 +20,10 @@ class CategoryCreateSerializers(serializers.ModelSerializer):
 
 
 class CategoryListSerializers(serializers.ModelSerializer):
-    
     class Meta:
         model = Category
         fields = "__all__"
+
 
 
 class CategoryUpdateSerializers(serializers.ModelSerializer):
