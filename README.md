@@ -21,7 +21,7 @@ News API with Django REST framework
 * There is a Postman collection that is in the repository, with all the routes mapped
 ## production environment
 Environment Variables
-Rename ```.env.dev ``` to ```.env``` and configure:
+Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.py:
  * SECRET_KEY
  * ``` python
        import secrets
