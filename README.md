@@ -14,7 +14,7 @@ docker-compose -d up --build
  * Criar o super usuario para acessar as rotas de CRUD 
 ```bash
  docker exec -it challenge_web bash
- python manage.py createsuperuseruser
+ python manage.py createsuperuser
 ```
 
 * Seu aplicativo estará em execução em `http://127.0.0.1:8000`
