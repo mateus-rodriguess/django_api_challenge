@@ -24,18 +24,18 @@ docker-compose run web python manage.py createsuperuser
 - Obter token: `/api/token/`
  
 - APIs restritas ao administrador:
- - Articles
-   - CRUD - `/api/admin/articles/create/`
-   - CRUD - `/api/admin/articles/update/<id>/`
-   - CRUD - `/api/admin/articles/delete/<id>/`
+  - Articles
+   - CREATE - `/api/admin/articles/create/`
+   - update - `/api/admin/articles/update/<id>/`
+   - delete - `/api/admin/articles/delete/<id>/`
 - Category
-  - CRUD - `/api/admin/category/create/`
-  - CRUD - `/api/admin/category/update/<id>/`
-  - CRUD - `/api/admin/category/delete/<id>/`
+  - create - `/api/admin/category/create/`
+  - update - `/api/admin/category/update/<id>/`
+  - delete - `/api/admin/category/delete/<id>/`
 - Author
-  - CRUD - `/api/admin/author/create/`
-  - CRUD - `/api/admin/author/update/<id>/`
-  - CRUD - `/api/admin/author/delete/<id>/`
+  - create - `/api/admin/author/create/`
+  - update - `/api/admin/author/update/<id>/`
+  - delete - `/api/admin/author/delete/<id>/`
 
 - Rotas comuns
 - Lista os artigos com categoria `/api/articles?category=<slug>` com a seguinte resposta:
