@@ -5,14 +5,17 @@ from .models import Articles, Category, Author
 
 @admin.register(Articles)
 class ArticlesAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ('title',)
+    list_display = ['title', "category", "author"]
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ('name',)
+    list_display = ['name', "created"]
 
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ('name',)
+    list_display = ['name', "created", "user_id", "id"]

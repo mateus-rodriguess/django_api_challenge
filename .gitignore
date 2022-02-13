@@ -114,6 +114,8 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
+# media
+media/
 # Environments
 .env.prod
 .env

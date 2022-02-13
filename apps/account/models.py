@@ -6,8 +6,8 @@ from django.utils.text import slugify
 
 
 class User(AbstractUser):
-    "User Model custom"
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, unique=True, default=uuid4, editable=False)
+    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.username)
         super(User, self).save(*args, **kwargs)

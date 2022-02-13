@@ -1,20 +1,15 @@
-from unicodedata import category, name
-from urllib import response
 from apps.api.serializers import news_serializers
 from apps.news.models import Category, Articles, Author
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from itertools import groupby
+
+
 
 class ArticlesListView(generics.ListAPIView):
-
     serializer_class = news_serializers.ArticlesListSerializers
 
     def get_queryset(self):
-        """
-        get_queryset
-        """
         category_name = self.request.query_params.get('category')
         if not category_name:
             queryset = Articles.objects.all()
@@ -84,7 +79,7 @@ class CategoryDetailView(generics.RetrieveAPIView):
         return Response(serializer.data)
 
 class CategoryCreateView(generics.CreateAPIView):
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated, IsAdminUser]
     queryset = Category.objects.all()
     serializer_class = news_serializers.CategoryCreateSerializers
 
@@ -100,17 +95,21 @@ class CategoryDeleteView(generics.DestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = news_serializers.CategoryDeleteSerializers
 
+class AuthorDetailView(generics.RetrieveAPIView):
+    queryset = Author.objects.all()
+    serializer_class = news_serializers.AuthorSerializers
 
 class AuthorListView(generics.ListAPIView):
     queryset = Author.objects.all()
     serializer_class = news_serializers.AuthorListSerializers
+
 
 class AuthorCreateView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated, IsAdminUser]
     queryset = Author.objects.all()
     serializer_class = news_serializers.AuthorCreateSerializers
 
-
+    
 class AuthorUpdateView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated, IsAdminUser]
     queryset = Author.objects.all()
@@ -120,9 +119,5 @@ class AuthorUpdateView(generics.UpdateAPIView):
 class AuthorDeleteView(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated, IsAdminUser]
     queryset = Author.objects.all()
-   
     serializer_class = news_serializers.AuthorDeleteSerializers
 
-class AuthorDetailView(generics.RetrieveAPIView):
-    queryset = Author.objects.all()
-    serializer_class = news_serializers.AuthorSerializers

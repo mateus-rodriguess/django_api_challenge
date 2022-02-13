@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'secrect_key'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key'),
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.account',
     'apps.api',
     'apps.news',
+    'apps.core',
 
 ]
 
@@ -101,8 +102,8 @@ REST_FRAMEWORK = {
 
 # token JWT
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1) if not DEBUG else timedelta(days=30),
-    'REFRESH_TOKEN_LIFETIME':  timedelta(days=20) if not DEBUG else timedelta(days=40),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1) if not DEBUG else timedelta(days=10),
+    'REFRESH_TOKEN_LIFETIME':  timedelta(days=2) if not DEBUG else timedelta(days=10),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': False,
@@ -152,14 +153,15 @@ WSGI_APPLICATION = 'django_challenge.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "challenge",
-        'USER': "postgres",
-        'PASSWORD': "challenge",
-        'HOST': "postgres",
-        'PORT': 5432,
+        'NAME': os.environ.get('POSTGRES_DB', 'challenge'),
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'challenge'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'postgres'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
 

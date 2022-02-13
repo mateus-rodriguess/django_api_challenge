@@ -1,8 +1,6 @@
-from urllib import response
 from rest_framework import serializers, status
 from rest_framework.mixins import DestroyModelMixin
 from rest_framework.response import Response
-from apps.account.models import User
 
 from apps.news.models import Articles, Category, Author
 
@@ -61,22 +59,21 @@ class AuthorListSerializers(serializers.ModelSerializer):
         fields = ["id", "name", "picture"]
 
 class AuthorCreateSerializers(serializers.ModelSerializer):
-    user_id = serializers.IntegerField()
-
+   
     class Meta:
         model = Author
-        fields = ["id", "user_id", "picture"]
+        fields = ["id","name", "user", "picture"]
+    
+    def create(self, validated_data):
 
-    # def create(self, validated_data):
-    #     user_id = validated_data.pop("user_id")
+        if not Author.objects.filter(user=self.data["user"]).exists():
+            return super().create(validated_data)
+        data = {"message": "An author is already registered with this user"}
+        return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
 
-    #     user = User.objects.get(id=user_id)
-    #     if not user:
-    #         return  Author.objects.create(**validated_data)
-    #     return Response(status=status.HTTP_403_FORBIDDEN)
 
 class AuthorUpdateSerializers(serializers.ModelSerializer):
-    
+
     class Meta:
         model = Author
         fields = ["id", "name", "picture"]
@@ -101,8 +98,6 @@ class ArticlesSerializers(serializers.ModelSerializer):
         fields = ["id", "author", "category", "title", "summary"]
     
 
-    
-
 class ArticlesCreateSerializers(serializers.ModelSerializer):
    
     class Meta:
@@ -120,6 +115,7 @@ class ArticlesListSerializers(serializers.ModelSerializer):
         model = Articles
         fields = ["id", "author", "category", "title", "summary"]
 
+
 class ArticlesUpdateSerializers(serializers.ModelSerializer):
    
     class Meta:
@@ -127,8 +123,8 @@ class ArticlesUpdateSerializers(serializers.ModelSerializer):
         fields = ["id", "author", "category", "title", "summary"]
 
     def update(self, instance, validated_data):
-
         return super().update(instance, validated_data)
+
 
 class ArticlesDeleteSerializers(serializers.ModelSerializer, DestroyModelMixin):
     class Meta:

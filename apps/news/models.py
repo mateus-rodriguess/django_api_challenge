@@ -10,12 +10,13 @@ class Author(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     name = models.CharField(max_length=150)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-
     picture = models.ImageField(upload_to=f'author/images/', null=True,blank=True)
+    
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        ordering = ('-created',)
         verbose_name = "Author"
         verbose_name_plural = "Authors"
 
@@ -23,7 +24,7 @@ class Author(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("articles:author_detail", kwargs={"pk": self.pk})
+        return reverse("news:author_detail", kwargs={"pk": self.pk})
 
 
 class Category(models.Model):
@@ -35,6 +36,7 @@ class Category(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ('-created',)
         verbose_name = "Category"
         verbose_name_plural = "Categoryes"
 
@@ -46,7 +48,7 @@ class Category(models.Model):
         super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('articles:category_list_by_category', args=[self.slug])
+        return reverse('news:category_list_by_category', args=[self.slug])
 
 
 class Articles(models.Model):
@@ -60,6 +62,7 @@ class Articles(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ('-created',)
         verbose_name = "articles"
         verbose_name_plural = "articles"
 
@@ -67,4 +70,4 @@ class Articles(models.Model):
         return str(self.title[:30])
 
     def get_absolute_url(self):
-        return reverse("articles:articles_detail", kwargs={"pk": self.pk})
+        return reverse("news:articles_detail", kwargs={"pk": self.pk})

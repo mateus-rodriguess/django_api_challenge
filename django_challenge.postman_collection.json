@@ -144,7 +144,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"refresh\": \"\"\r\n}",
+							"raw": "{\r\n    \"refresh\": \"token\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -234,7 +234,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/articles?category=<slug>",
+							"raw": "http://localhost:8000/api/articles?category=<slug>/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -247,7 +247,7 @@
 							"query": [
 								{
 									"key": "category",
-									"value": "<slug>"
+									"value": "<slug>/"
 								}
 							]
 						}
@@ -312,7 +312,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"category\": \"d710f7b6-0342-4a00-a8e0-a2293cdfa8e1\",\r\n    \"author\": \"803414d4-bdcc-460b-a3b9-a154ac7e3241\",\r\n    \"title\": \"titulo\",\r\n    \"summary\": \"summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui. summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui.summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui\"\r\n}",
+									"raw": "{\r\n    \"category\": \"<id>\",\r\n    \"author\": \"<id>\",\r\n    \"title\": \"titulo\",\r\n    \"summary\": \"summary bem grande aqui.\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -344,7 +344,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"category\": \"d710f7b6-0342-4a00-a8e0-a2293cdfa8e1\",\r\n    \"author\": \"803414d4-bdcc-460b-a3b9-a154ac7e3241\",\r\n    \"title\": \"Titulo do artigo.\",\r\n    \"summary\": \"summary\"\r\n}",
+									"raw": "{\r\n    \"category\": \"<id>\",\r\n    \"author\": \"<id>\",\r\n    \"title\": \"Titulo do artigo.\",\r\n    \"summary\": \"summary\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -447,7 +447,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"category\",\r\n    \"slug\": \"category\"\r\n}",
+									"raw": "{\r\n    \"name\": \"category\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -518,7 +518,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"aass\",\r\n    \"user_id\": 2\r\n}",
+									"raw": "{\r\n    \"name\": \"nome\",\r\n    \"user\":\"<id>\"\r\n}\r\n\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -549,7 +549,7 @@
 								"method": "PATCH",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/author/create/update/id/",
+									"raw": "http://localhost:8000/api/author/create/update/<id>/",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -560,7 +560,7 @@
 										"author",
 										"create",
 										"update",
-										"id",
+										"<id>",
 										""
 									]
 								}
@@ -573,7 +573,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/admin/author/delete/id/",
+									"raw": "http://localhost:8000/api/admin/author/delete/<id>/",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -584,7 +584,7 @@
 										"admin",
 										"author",
 										"delete",
-										"id",
+										"<id>",
 										""
 									]
 								}
@@ -646,7 +646,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3MzAyMzc2LCJpYXQiOjE2NDQ3MTAzNzYsImp0aSI6IjYzYmRmZWEzYzVmNzQwZjE5YTlkMWMwYjljZWNlZjhjIiwidXNlcl9pZCI6ImFkNzYxZmQwLTJlMGYtNDNkYi05ZTllLTllMGI5YmE0YzBkYSJ9.pYAjfr0CbUWtjPygYm2ASIWtr0RgnnIY81edErr1NUM",
+				"value": "",
 				"type": "string"
 			}
 		]
