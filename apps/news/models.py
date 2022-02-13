@@ -1,3 +1,4 @@
+from uuid import uuid4
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -6,10 +7,11 @@ from apps.account.models import User
 
 
 class Author(models.Model):
-    name = models.CharField(max_length=50)
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    name = models.CharField(max_length=150)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
 
-    image = models.ImageField(upload_to=f'author/images/', null=True,blank=True)
+    picture = models.ImageField(upload_to=f'author/images/', null=True,blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -25,7 +27,8 @@ class Author(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=150,null=False, blank=False)
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    name = models.CharField(max_length=150,null=False, blank=False, unique=True)
     slug = models.SlugField(unique=True)
 
     created = models.DateTimeField(auto_now_add=True)
@@ -47,6 +50,7 @@ class Category(models.Model):
 
 
 class Articles(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     title = models.CharField(max_length=140, null=False, blank=False)
     summary = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
