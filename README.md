@@ -1,79 +1,98 @@
-# Jungle Devs - Django Challenge #001
+# Django Challenge
 
 ## Description
+API de noticias com django rest:
 
-**Challenge goal**: The purpose of this challenge is to give an overall understanding of a backend application. You’ll be implementing a simplified version of a news provider API. The concepts that you’re going to apply are:
-
-- REST architecture;
-- Authentication and permissions;
-- Data modeling and migrations;
-- PostgreSQL database;
-- Query optimization;
-- Serialization;
-- Production builds (using Docker).
-
-**Target level**: This is an all around challenge that cover both juniors and experience devs based on the depth of how the concepts were applied.
-
-**Final accomplishment**: By the end of this challenge you’ll have a production ready API.
-
-## Acceptance criteria
-
-- Clear instructions on how to run the application in development mode
-- Clear instructions on how to run the application in a Docker container for production
-- A good API documentation or collection
+## Ambiente de desenvolvimento
+### Ferramentas necessárias:
+ * Install [Docker](https://docs.docker.com/compose/install/)
+  * certifique se deixar a porta 8000 liberada
+  * Executar o comando docker na raiz do projeto
+```bash
+docker-compose up --build
+``` 
+ * Criar o super usuario 
+```bash
+docker-compose run web python manage.py createsuperuser
+```
+* Seu aplicativo estará em execução em `http://127.0.0.1:8000`
+* Tem uma Postman collection que esta no repositirio, comas rotas mapeadas
+# Rotas 
+- rotas comuns:
 - Login API: `/api/login/`
 - Sign-up API: `/api/sign-up/`
-- Administrator restricted APIs:
-  - CRUD `/api/admin/authors/`
-  - CRUD `/api/admin/articles/`
-- List article endpoint `/api/articles/?category=:slug` with the following response:
-```json
-[
-  {
-    "id": "39df53da-542a-3518-9c19-3568e21644fe",
-    "author": {
-      "id": "2d460e48-a4fa-370b-a2d0-79f2f601988c",
-      "name": "Author Name",
-      "picture": "https://picture.url"
-    },
-    "category": "Category",
-    "title": "Article title",
-    "summary": "This is a summary of the article"
-  },
-  ...
-]
-```
-- Article detail endpoint `/api/articles/:id/` with different responses for anonymous and logged users:
+- Obter token: `/api/token/`
+ 
+- APIs restritas ao administrador:
+  - Articles
+   - CREATE - `/api/admin/articles/create/`
+   - update - `/api/admin/articles/update/<id>/`
+   - delete - `/api/admin/articles/delete/<id>/`
+- Category
+  - create - `/api/admin/category/create/`
+  - update - `/api/admin/category/update/<id>/`
+  - delete - `/api/admin/category/delete/<id>/`
+- Author
+  - create - `/api/admin/author/create/`
+  - update - `/api/admin/author/update/<id>/`
+  - delete - `/api/admin/author/delete/<id>/`
 
-    **Anonymous**
+- Rotas comuns
+- Lista os artigos com categoria `/api/articles?category=<slug>` com a seguinte resposta:
+```json
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": "32f26f26-d579-4d06-8375-b5445081808c",
+            "author": {
+                "id": "803414d4-bdcc-460b-a3b9-a154ac7e3241",
+                "name": "mateus",
+                "picture": "http://localhost:8000/media/author/images/perfil_6hsvzll.jpeg"
+            },
+            "category": {
+                "name": "jogos"
+            },
+            "title": "Titulo do artigo",
+            "summary": "resumo do artigo. resumo do artigo, resumo do artigo, resumo do artigo"
+        }
+    ]
+}
+```
+- Setalhes do artigo `/api/articles/:id/` com respostas diferentes para usuários anônimos e logados:
+
+    **Anônimo**
     ```json
-    {
-      "id": "39df53da-542a-3518-9c19-3568e21644fe",
-      "author": {
-        "id": "2d460e48-a4fa-370b-a2d0-79f2f601988c",
-        "name": "Author Name",
-        "picture": "https://picture.url"
-      },
-      "category": "Category",
-      "title": "Article title",
-      "summary": "This is a summary of the article",
-      "firstParagraph": "<p>This is the first paragraph of this article</p>"
-    }
+        {
+          "id": "95e0d270-e019-4cf9-93fc-926630432514",
+          "author": {
+              "id": "803414d4-bdcc-460b-a3b9-a154ac7e3241",
+              "name": "mateus",
+              "picture": "http://localhost:8000/media/author/images/perfil_6hsvzll.jpeg"
+          },
+          "category": "jogos",
+          "title": "titulo",
+          "summary": "summary bem grande aqui summary bem grande aqui..",
+          "firstParagraph": "<p>summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p>"
+        }
     ```
 
-    **Logged user**
+    **Usuário logado**
     ```json
-    {
-      "id": "39df53da-542a-3518-9c19-3568e21644fe",
-      "author": {
-        "id": "2d460e48-a4fa-370b-a2d0-79f2f601988c",
-        "name": "Author Name",
-        "picture": "https://picture.url"
-      },
-      "category": "Category",
-      "title": "Article title",
-      "summary": "This is a summary of the article",
-      "firstParagraph": "<p>This is the first paragraph of this article</p>",
-      "body": "<div><p>Second paragraph</p><p>Third paragraph</p></div>"
-    }
+      {
+        "id": "95e0d270-e019-4cf9-93fc-926630432514",
+        "author": {
+            "id": "803414d4-bdcc-460b-a3b9-a154ac7e3241",
+            "name": "mateus",
+            "picture": "http://localhost:8000/media/author/images/perfil_6hsvzll.jpeg"
+        },
+        "category": "jogos",
+        "title": "titulo",
+        "summary": "summary bem grande aqui summary bem grande aqui...",
+        "firstParagraph": "<p>summary bem grande aqui..</p>",
+        "body": "<div><p>summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p>
+        <p> summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p></div>"
+      }
     ```
