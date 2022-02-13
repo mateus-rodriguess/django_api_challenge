@@ -19,6 +19,21 @@ News API with django rest:
 
 * Your application will be running on `http://127.0.0.1:8000`
 * There is a Postman collection that is in the repository, with all the routes mapped
+## production environment
+Environment Variables
+Rename ```.env.dev ``` to ```.env.prod``` and configure:
+ * SECRET_KEY
+ * ``` python
+       import secrets
+       secrets.token_urlsafe(60) 
+   ```
+* Start container
+  ```docker-compose -f docker-compose-dev.yml up ```
+* Container access
+  ``` docker-compose -f docker-compose-dev.yml exec challenge_web bash```
+* Create super user
+  ``` python manage.py createsuperuser ```
+<hr>
 # Endpoint login and authentication
 - rotas comuns:
 - Login API: `/api/login/`
