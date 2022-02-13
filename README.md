@@ -1,13 +1,13 @@
-# Jungle Devs - Django Challenge
+# Django Challenge
 
 ## Description
+API de noticias com django rest:
 
-**Challenge goal**: API de noticias com django rest:
- # Como instalar
+## Ambiente de desenvolvimento
+### Ferramentas necessárias:
  * Install [Docker](https://docs.docker.com/compose/install/)
- * Executar o comando docker
-
-* certifique se deixar a porta 8000 liberada
+  * certifique se deixar a porta 8000 liberada
+  * Executar o comando docker na raiz do projeto
 ```bash
 docker-compose up --build
 ``` 
@@ -16,16 +16,29 @@ docker-compose up --build
 docker-compose run web python manage.py createsuperuser
 ```
 * Seu aplicativo estará em execução em `http://127.0.0.1:8000`
+* Tem uma Postman collection que esta no repositirio, comas rotas mapeadas
+# Rotas 
 - rotas comuns:
 - Login API: `/api/login/`
 - Sign-up API: `/api/sign-up/`
-- Administrator restricted APIs:
-* Para essa rotas precisa esta autenticado.
-* Pata autenticar com Token JWT
-- `/api/token/` passando os dados do usuario ADM
-  - CRUD `/api/admin/authors/`
-  - CRUD `/api/admin/articles/`
-- Lista os artigos com categoria `/api/articles/?category=:slug` com a seguinte resposta:
+- Obter token: `/api/token/`
+ 
+- APIs restritas ao administrador:
+ - Articles
+   - CRUD - `/api/admin/articles/create/`
+   - CRUD - `/api/admin/articles/update/<id>/`
+   - CRUD - `/api/admin/articles/delete/<id>/`
+- Category
+  - CRUD - `/api/admin/category/create/`
+  - CRUD - `/api/admin/category/update/<id>/`
+  - CRUD - `/api/admin/category/delete/<id>/`
+- Author
+  - CRUD - `/api/admin/author/create/`
+  - CRUD - `/api/admin/author/update/<id>/`
+  - CRUD - `/api/admin/author/delete/<id>/`
+
+- Rotas comuns
+- Lista os artigos com categoria `/api/articles?category=<slug>` com a seguinte resposta:
 ```json
 {
     "count": 1,
@@ -68,18 +81,18 @@ docker-compose run web python manage.py createsuperuser
 
     **Usuário logado**
     ```json
-    {
-      "id": "95e0d270-e019-4cf9-93fc-926630432514",
-      "author": {
-          "id": "803414d4-bdcc-460b-a3b9-a154ac7e3241",
-          "name": "mateus",
-          "picture": "http://localhost:8000/media/author/images/perfil_6hsvzll.jpeg"
-      },
-      "category": "jogos",
-      "title": "titulo",
-      "summary": "summary bem grande aqui summary bem grande aqui...",
-      "firstParagraph": "<p>summary bem grande aqui..</p>",
-      "body": "<div><p>summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p>
-      <p> summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p></div>"
-    }
+      {
+        "id": "95e0d270-e019-4cf9-93fc-926630432514",
+        "author": {
+            "id": "803414d4-bdcc-460b-a3b9-a154ac7e3241",
+            "name": "mateus",
+            "picture": "http://localhost:8000/media/author/images/perfil_6hsvzll.jpeg"
+        },
+        "category": "jogos",
+        "title": "titulo",
+        "summary": "summary bem grande aqui summary bem grande aqui...",
+        "firstParagraph": "<p>summary bem grande aqui..</p>",
+        "body": "<div><p>summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p>
+        <p> summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p></div>"
+      }
     ```
