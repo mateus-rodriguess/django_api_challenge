@@ -19,6 +19,7 @@ urlpatterns = [
     
     path("account/sign-up/", account_views.AccountCreateView.as_view(), name="sign-up"),
     path("account/update/<uuid:pk>/", account_views.AccountUpdateView.as_view(), name="accout_update"),
+    path("admin/accounts/", account_views.AccountListView.as_view(), name="accout_list"),
 
     path("articles/<uuid:pk>/", news_views.ArticlesDetailView.as_view(), name="articles_detail"),
     path("articles/", news_views.ArticlesListView.as_view(), name="articles_list"),

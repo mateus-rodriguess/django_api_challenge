@@ -19,3 +19,9 @@ class AccountUpdateSerializers(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):        
         return super().update(instance, validated_data)
+
+class AccountListSerializers(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = ["id", "username", "email", "is_staff", "is_active", "is_superuser"]

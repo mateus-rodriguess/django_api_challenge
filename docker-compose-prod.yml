@@ -1,0 +1,29 @@
+version: '3.0'
+services:
+  web:
+      build: .
+      container_name: challenge_web
+      command: >
+        sh -c "python manage.py makemigrations &&
+               python manage.py migrate &&
+               gunicorn django_challenge.wsgi --bind 0.0.0.0:8000"
+      volumes:
+        - .:/code
+      restart: on-failure
+      ports:
+        - "8000:8000"
+      env_file:
+      - ./.env
+      depends_on:
+        - db
+  db:
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    hostname: postgres
+    restart: on-failure
+    container_name: challenge_db
+    env_file:
+      - ./.env
+  
+     

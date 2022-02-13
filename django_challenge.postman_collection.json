@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4bcdcc72-df44-4e9a-9ad0-5d016b1645c5",
+		"_postman_id": "0a8ad145-8b34-4a39-b0dd-a2fc18cc4875",
 		"name": "django_challenge",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -65,6 +65,28 @@
 								"account",
 								"update",
 								"id",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users list [adm]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/admin/accounts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"accounts",
 								""
 							]
 						}
@@ -637,6 +659,33 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/admin/accounts/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"accounts",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
@@ -646,7 +695,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1NjQ0Mzg0LCJpYXQiOjE2NDQ3ODAzODQsImp0aSI6ImYzMzJkNjdmMWU3ODQyM2JiM2YxN2M1N2Q3OGZlMDljIiwidXNlcl9pZCI6IjkyOWExYzc5LTJiNjAtNDgxNS05OTZjLTVkNDg3N2I1NzE4MSJ9.eeV-ijLdhRR6QkObpI8v34Iah81QAJwy08OxzGGk-iY",
 				"type": "string"
 			}
 		]
