@@ -54,7 +54,7 @@ Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.
    - UPDATE - `/api/admin/author/update/<id>/`
    - DELETE - `/api/admin/author/delete/<id>/`
  - User
-   - List - `api/admin/accounts/`
+   - LIST - `api/admin/accounts/`
  
 - Endpoint
 - List articles with category `/api/articles?category=<slug>` with the following answer:
