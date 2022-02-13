@@ -18,8 +18,8 @@ News API with Django REST framework
     ```
 
 * Your application will be running on `http://127.0.0.1:8000`
-* There is a Postman collection that is in the repository, with all the routes mapped
-## production environment
+* There is a Postman collection that is in the repository, with all the routes mapped 
+## Production environment
 Environment Variables
 Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.py:
  * SECRET_KEY
@@ -34,14 +34,12 @@ Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.
 * Create super user
   ` python manage.py createsuperuser `
 <hr>
-
 # Endpoint login and authentication
  * Rotas comuns:
     - Login API: `/api/login/`
     - Sign-up API: `/api/sign-up/`
     - Get token: `/api/token/`
-  
- 
+<hr> 
  - Admin restricted APIs:
  - Articles
    - CREATE - `/api/admin/articles/create/`
@@ -57,7 +55,7 @@ Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.
    - DELETE - `/api/admin/author/delete/<id>/`
  - User
    - List - `api/admin/accounts/`
-    
+ <hr>
 - Endpoint
 - List articles with category `/api/articles?category=<slug>` with the following answer:
   ```json
