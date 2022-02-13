@@ -33,13 +33,13 @@ Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.
   ` docker-compose -f docker-compose-dev.yml exec challenge_web bash `
 * Create super user
   ` python manage.py createsuperuser `
-<hr>
+
 # Endpoint login and authentication
  * Rotas comuns:
     - Login API: `/api/login/`
     - Sign-up API: `/api/sign-up/`
     - Get token: `/api/token/`
-<hr> 
+
  - Admin restricted APIs:
  - Articles
    - CREATE - `/api/admin/articles/create/`
@@ -55,7 +55,7 @@ Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.
    - DELETE - `/api/admin/author/delete/<id>/`
  - User
    - List - `api/admin/accounts/`
- <hr>
+ 
 - Endpoint
 - List articles with category `/api/articles?category=<slug>` with the following answer:
   ```json
