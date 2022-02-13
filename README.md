@@ -26,19 +26,21 @@ News API with django rest:
 - Get token: `/api/token/`
  
 - Admin restricted APIs:
-  - Articles
+ - Articles
    - CREATE - `/api/admin/articles/create/`
    - UPDATE - `/api/admin/articles/update/<id>/`
    - DELETE - `/api/admin/articles/delete/<id>/`
-  - Category
+ - Category
    - CREATE - `/api/admin/category/create/`
    - UPDATE - `/api/admin/category/update/<id>/`
    - DELETE - `/api/admin/category/delete/<id>/`
-  - Author
+ - Author
    - CREATE - `/api/admin/author/create/`
    - UPDATE - `/api/admin/author/update/<id>/`
    - DELETE - `/api/admin/author/delete/<id>/`
-
+ - User
+   - List - `api/admin/accounts/`
+    
 - Endpoint
 - List articles with category `/api/articles?category=<slug>` with the following answer:
 ```json
