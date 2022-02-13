@@ -9,12 +9,14 @@ API de noticias com django rest:
   * certifique se deixar a porta 8000 liberada
   * Executar o comando docker na raiz do projeto
 ```bash
-docker-compose up --build
+docker-compose -d up --build
 ``` 
- * Criar o super usuario 
+ * Criar o super usuario para acessar as rotas de CRUD 
 ```bash
-docker-compose run web python manage.py createsuperuser
+ docker exec -it challenge_web bash
+ python manage.py createsuperuseruser
 ```
+
 * Seu aplicativo estará em execução em `http://127.0.0.1:8000`
 * Tem uma Postman collection que esta no repositirio, comas rotas mapeadas
 # Rotas 
