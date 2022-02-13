@@ -1,46 +1,46 @@
 # Django Challenge
 
 ## Description
-API de noticias com django rest:
+News API with django rest:
 
-## Ambiente de desenvolvimento
-### Ferramentas necessárias:
+## Development environment
+### Tools needed:
  * Install [Docker](https://docs.docker.com/compose/install/)
-  * certifique se deixar a porta 8000 liberada
-  * Executar o comando docker na raiz do projeto
-```bash
-docker-compose -d up --build
-``` 
- * Criar o super usuario para acessar as rotas de CRUD 
-```bash
- docker exec -it challenge_web bash
- python manage.py createsuperuser
-```
+  * Make sure you leave port 8000 open
+  * Run docker command in project root
+   ```bash
+     docker-compose up --build
+   ``` 
+ * Create the super user to access the CRUD routes
+   ```bash
+    docker exec -it challenge_web bash
+    python manage.py createsuperuser
+   ```
 
-* Seu aplicativo estará em execução em `http://127.0.0.1:8000`
-* Tem uma Postman collection que esta no repositirio, comas rotas mapeadas
-# Rotas 
+* Your application will be running on `http://127.0.0.1:8000`
+* There is a Postman collection that is in the repository, with all the routes mapped
+# Endpoint login and authentication
 - rotas comuns:
 - Login API: `/api/login/`
 - Sign-up API: `/api/sign-up/`
-- Obter token: `/api/token/`
+- Get token: `/api/token/`
  
-- APIs restritas ao administrador:
+- Admin restricted APIs:
   - Articles
    - CREATE - `/api/admin/articles/create/`
-   - update - `/api/admin/articles/update/<id>/`
-   - delete - `/api/admin/articles/delete/<id>/`
-- Category
-  - create - `/api/admin/category/create/`
-  - update - `/api/admin/category/update/<id>/`
-  - delete - `/api/admin/category/delete/<id>/`
-- Author
-  - create - `/api/admin/author/create/`
-  - update - `/api/admin/author/update/<id>/`
-  - delete - `/api/admin/author/delete/<id>/`
+   - UPDATE - `/api/admin/articles/update/<id>/`
+   - DELETE - `/api/admin/articles/delete/<id>/`
+  - Category
+   - CREATE - `/api/admin/category/create/`
+   - UPDATE - `/api/admin/category/update/<id>/`
+   - DELETE - `/api/admin/category/delete/<id>/`
+  - Author
+   - CREATE - `/api/admin/author/create/`
+   - UPDATE - `/api/admin/author/update/<id>/`
+   - DELETE - `/api/admin/author/delete/<id>/`
 
-- Rotas comuns
-- Lista os artigos com categoria `/api/articles?category=<slug>` com a seguinte resposta:
+- Endpoint
+- List articles with category `/api/articles?category=<slug>` with the following answer:
 ```json
 {
     "count": 1,
@@ -63,7 +63,7 @@ docker-compose -d up --build
     ]
 }
 ```
-- Setalhes do artigo `/api/articles/:id/` com respostas diferentes para usuários anônimos e logados:
+- Article details `/api/articles/<id>/` with different answers for anonymous and logged in users:
 
     **Anônimo**
     ```json
@@ -93,8 +93,6 @@ docker-compose -d up --build
         "category": "jogos",
         "title": "titulo",
         "summary": "summary bem grande aqui summary bem grande aqui...",
-        "firstParagraph": "<p>summary bem grande aqui..</p>",
-        "body": "<div><p>summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p>
-        <p> summary bem grande aqui summary bem grande aqui summary bem grande aqui summary bem grande aqui</p></div>"
+        "firstParagraph": "<p>summary bem grande aqui..</p>"
       }
     ```
