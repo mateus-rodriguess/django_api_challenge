@@ -28,19 +28,21 @@ Rename ```.env.dev ``` to ```.env.prod``` and configure:
        secrets.token_urlsafe(60) 
    ```
 * Start container
-  ```docker-compose -f docker-compose-dev.yml up ```
+  ` docker-compose -f docker-compose-dev.yml up `
 * Container access
-  ``` docker-compose -f docker-compose-dev.yml exec challenge_web bash```
+  ` docker-compose -f docker-compose-dev.yml exec challenge_web bash `
 * Create super user
-  ``` python manage.py createsuperuser ```
+  ` python manage.py createsuperuser `
 <hr>
+
 # Endpoint login and authentication
-- rotas comuns:
-- Login API: `/api/login/`
-- Sign-up API: `/api/sign-up/`
-- Get token: `/api/token/`
+ * Rotas comuns:
+    - Login API: `/api/login/`
+    - Sign-up API: `/api/sign-up/`
+    - Get token: `/api/token/`
+  
  
-- Admin restricted APIs:
+ - Admin restricted APIs:
  - Articles
    - CREATE - `/api/admin/articles/create/`
    - UPDATE - `/api/admin/articles/update/<id>/`
