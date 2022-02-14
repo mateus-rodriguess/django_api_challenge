@@ -24,9 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = "secrect_key"
-# !!! uncomment the line below for production !!!
 
-#####################
+# !!! uncomment the line below for production !!!
 #SECRET_KEY = os.environ.get('SECRET_KEY', 'secretkey'),
 #####################
 
