@@ -98,7 +98,7 @@ Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.
         }
     ```
 
-    **Usuário logado**
+    **Logged user**
     ```json
       {
         "id": "95e0d270-e019-4cf9-93fc-926630432514",
@@ -113,7 +113,7 @@ Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.
         "firstParagraph": "<p>summary bem grande aqui..</p>"
       }
      ```
-     # Uther routes
+     # endpoint category
      - Category - `/api/category/ `
         ``` json
            {
