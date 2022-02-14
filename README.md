@@ -18,7 +18,7 @@ News API with Django REST framework
     ```
 
 * Your application will be running on `http://127.0.0.1:8000`
-* There is a Postman collection that is in the repository, with all the routes mapped 
+* There is a `Postman collection` that is in the repository, with all the routes mapped 
 ## Production environment
 Environment Variables
 Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.py:
