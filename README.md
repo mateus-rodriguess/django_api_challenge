@@ -28,9 +28,10 @@ Rename ```.env.dev ``` to ```.env``` and configure in django_challenge/settings.
        secrets.token_urlsafe(60) 
    ```
 * Start container
-  ` docker-compose -f docker-compose-drod.yml up `
+  ` docker-compose -f docker-compose-prod.yml up `
 * Container access
-  ` docker-compose -f docker-compose-prod.yml exec challenge_web bash `
+* docker exec -it challenge_web bash
+  ` docker exec -it challenge_web sh `
 * Create super user
   ` python manage.py createsuperuser `
 
